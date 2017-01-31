@@ -1,0 +1,43 @@
+---
+layout: default-tabs
+title: cyberstrike
+description: SCI FI Multiplayer FPS
+developer: Alex Bennett
+composer: Michael O'Neil
+display-img: /assets/images/cyberstrike/banner.png
+header:
+    video:
+        embed: /xB26nQVb7tQ?playlist=xB26nQVb7tQ
+    overlay_image: true
+    download_url: https://drive.google.com/open?id=0BzLBvlzBp2H4bTE4MzItNUdQM1E
+tabs:
+    main:
+        - General Info
+        - Code Examples
+    snippets:
+        - GameMode.cs
+        - TeamBased.cs
+        - CTF.cs
+        - LTS.cs
+        - SoundCue.cs
+        - vp_CustomFPWeaponShooter.cs
+---
+<div id="General Info" class="tab-body">
+    <p>Made in my spare time while on university breaks. The idea of this game was to create a simple fun multiplayer game for my friends that simulated playing paintball &amp; laser tag. This game is nowhere near complete and has a lot of bugs, but since I've coded everything except the UFPS controller I'm relatively happy with what I've made so far. Also this was my first attempt at a networked game and was made before I did a networking course.</p>
+    <h3>Controls</h3>
+    <p>Standard FPS. W A S D move, Shift sprint, Space jump, LMB shoot, RMB zoom, Tab scoreboard.</p>
+    <h3>Gameplay</h3>
+    <p></p>
+    <p>Simple multiplayer FPS shooter with multiple game modes:
+    <ul>
+        <li>FFA - Free For All</li>
+        <li>TDM - Team Death Match</li>
+        <li>CTF - Capture The Flag</li>
+        <li>LTS - Last Team Standing (similar to counter strike)</li>
+    </ul></p>
+    <p>I recommend changing the level in the 'Game Settings' to 'level2' as its a better test map with the vibe I was aiming for.</p>
+</div>
+
+<div id="Code Examples" class="tab-body">
+    {% include code-snippets.html data=page.tabs.snippets %}
+</div>

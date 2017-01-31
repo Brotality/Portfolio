@@ -1,0 +1,8 @@
+<div class="tab-nav" id="tab-navigation-{{ include.name }}"> <!-- style="{% if include.type == 'vertical' %} float: left; {% endif %}{% if include.stretch %} display: table; {% endif %}" -->
+  <ul class="nav nav-pills nav-justified">
+    {% for tab in include.data %}
+      <li><a href="javascript:void(0)" onclick="openTab(event, '{{ include.name }}', '{{ tab }}');"
+      >{{ tab }}</a></li>
+    {% endfor %}
+  </ul>
+</div>

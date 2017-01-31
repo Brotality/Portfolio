@@ -1,0 +1,76 @@
+<div id="General Info" class="tab-body">
+    <p>Made in one month from November 2014 - December 2014. I made this game for my friend for his "Sound for Interactive Media" assignment at the Australian Institute of Music. The game was inspired by the many cheap Unity3D horror games coming out around this time, such as slender.  The aim of the project was to have the audio dynamically change depending on certain variables, such as monster location and awareness of player. This was achieved through using <a href="http://www.fmod.org/">FMOD</a> for the music, <a href="http://arongranberg.com/astar/">A* Pathfinding Project</a> and <a href="http://unitycoding.com/icode/">ICode</a> for the AI. The visuals are a unity store bought package. The rest of the game was programmed by myself using C#.</p>
+    <h3>Controls</h3>
+    <p>Standard FPS. W A S D move, Shift sprint, Space jump, E interact, T toggle torch, Scroll change torch zoom, ESC pause.</p>
+    <h3>Gameplay</h3>
+    <p>The player needs to navigate their way through a randomly generated maze, collect all the keys and reach the exit. There is one monster roaming the maze and every key collected spawns another monster. Torch battery slowly drains and slowly becomes more dim. The torch can be recharged but only if its turned off. The player can sprint to lose the monster however their stamina drains fast and will lose their ability to move altogether if they use too much.</p>
+    <p>Gameplay text hints:
+    <ul>
+        <li>Your stamina drains fast. Only use it when necessary.</li>
+        <li>Your stamina regenerates faster if you are not moving.</li>
+        <li>Don't let your flashlight run out of battery or it will no longer work.</li>
+        <li>Turn off your flashlight to recharge its battery.</li>
+        <li>The maze ambience will change the closer you are to a monster.</li>
+        <li>Your flashlight will lose brightness the lower the battery is.</li>
+        <li>Scroll to change the focus of the flashlight.</li>
+        <li>More monsters spawn when you open a chest, so plan carefully.</li>
+        <li>Pray to RNGesus.</li>
+    </ul></p>
+    <p style="font-weight: bold;">This game is very difficult, good luck.</p>
+</div>
+
+<div id="Artificial Intelligence" class="tab-body">
+    <div style="float: right; width: 40%; margin: 0em 1em;">
+        {% include figure.html image_path="/assets/images/hunted/AI_State_Machine.png" alt="AI State Machine" caption="Figure 1: AI State Machine" %}
+    </div>
+    <p>I decided to create the artificial intelligence for this game using the <a href="http://unitycoding.com/icode/">ICode</a> plugin as it allowed me to rapidly prototype different behaviours without having to create my own backend state machine system. The final state machine created for the AI, shown in Figure 1, evolved from an initial random wonder with chasing and attacking, to eventually include exploring the last known player position as well as sound investigation. Combined this managed to make a challenging AI, yet easy to exploit if you could work out its mechanics.</p>
+    <h3>State Machine Breakdown:</h3>
+    <ul>
+        <li>IDLE: Stands still for a random amount of time and decides where to head next.</li>
+        <ul>
+            <li>Choses a random dead end on the map to walk to -> WALKING</li>
+            <li>Hears the player moving -> INVESTIGATING</li>
+            <li>Sees the player and has not yet roared -> ROARING</li>
+        </ul>
+        <li>WALKING: Walks towards the selected waypoint.</li>
+        <ul>
+            <li>Moves the current waypoint and stops -> IDLE</li>
+            <li>Sees the player and has not yet roared -> ROARING</li>
+            <li>Sees the player and has roared -> RUNNING</li>
+            <li>Hears the player moving -> INVESTIGATING</li>
+        </ul>
+        <li>RUNNING: Continuously chases the player if they are in line of sight.</li>
+        <ul>
+            <li>Player is within attack range -> ATTACKING</li>
+            <li>Loses sight of player -> SEARCHING</li>
+        </ul>
+        <li>ATTACKING: This is a special state as it was broken down into multiple. This was due to a state not being allowed to wait for a length of time, instead it had to wait during a transition. This allowed the AI the check if it hit the player at a specific time during the attack animation rather than the beginning or end. The state breakdown is:</li>
+        <ul>
+            <li>PREPARING: The beginning part of the attack animation.</li>
+            <li>ATTACKING: The AI sends out a Raycast to see if its hitting the player.</li>
+                <ul>
+                    <li>Hits the player -> KILLING</li>
+                    <li>Misses the player -> FINISHING</li>
+                </ul>
+            <li>FINISHING: The end part of the attack animation.</li>
+            <li>KILLING: Sends a message to the Game Control to kill the player and end the game.</li>
+        </ul>
+        <li>SEARCHING: Moves towards the last seen player location. This allows it to chase the player around corners rather than going back to IDLE and running away in a random direction.</li>
+        <ul>
+            <li>Moves towards the last seen player location -> Looking</li>
+            <li>Hears the player moving -> INVESTIGATING</li>
+            <li>Sees the player -> RUNNING</li>
+        </ul>
+        <li>LOOKING: Stops and looks side to side. This checks the player is not hiding just out of line of sight, such as a 90-degree angle from the AIs forward direction.</li>
+        <ul>
+            <li>Does not see player -> IDLE</li>
+            <li>Hears the player moving -> INVESTIGATING</li>
+            <li>Sees the player -> RUNNING</li>
+        </ul>
+        <li>INVESTIGATING: Runs to the location of the player sound. This prevents the player from simply running around the AI faster than it can turn causing it to lose track and wonder off.</li>
+        <ul>
+            <li>Does not see player -> LOOKING</li>
+            <li>Sees player -> RUNNING</li>
+        </ul>
+    </ul>
+</div>

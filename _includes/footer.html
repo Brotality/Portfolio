@@ -1,0 +1,37 @@
+<footer class="container-fluid default-background">
+  <div class="container">
+    <div class="col-sm-7 text-left">
+      <ul class="list-unstyled list-inline">
+        <li><strong>Follow</strong></li>
+        {% if site.twitter_username %}
+          <li><a href="https://twitter.com/{{ site.twitter_username }}"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+        {% endif %}
+        {% if site.facebook_username %}
+          <li><a href="https://facebook.com/{{ site.facebook_username }}"><i class="fa fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        {% endif %}
+        {% if site.github_username %}
+          <li><a href="http://github.com/{{ site.github_username }}"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        {% endif %}
+        {% if site.bitbucket_username %}
+          <li><a href="http://bitbucket.org/{{ site.bitbucket_username }}"><i class="fa fa-fw fa-bitbucket" aria-hidden="true"></i> Bitbucket</a></li>
+        {% endif %}
+      </ul>
+      <p>&copy; 2016 {{ site.owner }}.</p>
+      <p>Powered by:
+      	<a href="http://jekyllrb.com" rel="nofollow">Jekyll</a>, 
+      	<a href="http://getbootstrap.com/" rel="nofollow">Bootstrap</a>, 
+      	<a href="http://imagehover.io/" rel="nofollow">ImageHover.css</a> &amp; 
+      	<a href="https://highlightjs.org/" rel="nofollow">Highlight.js</a> 
+      	(<a href="{{ site.baseurl }}/licenses" rel="license">Licenses</a>)
+      </p>
+    </div>
+    <div class="col-sm-5 text-right">
+      <address>
+        <strong>{{ site.owner }}</strong><br>
+        {{ site.profile }}<br>
+        <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> {{ site.location }}<br>
+        <a href="mailto:{{ site.email }}"><i class="fa fa-fw fa-envelope-square"></i> {{ site.email }}</a>
+      </address>
+    </div>
+  </div>
+</footer>

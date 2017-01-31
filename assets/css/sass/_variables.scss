@@ -1,0 +1,21 @@
+/* Variables */
+
+$gray                       : #7a8288;
+$dark-gray                  : mix(#000, $gray, 40%);
+$darker-gray                : mix(#000, $gray, 60%);
+$light-gray                 : mix(#fff, $gray, 50%);
+$lighter-gray               : mix(#fff, $gray, 90%);
+
+$body-color                 : #191919;
+$background-color           : #191919;
+$code-background-color      : #fafafa;
+$code-background-color-dark : $light-gray;
+$text-color                 : $lighter-gray;
+$heading-color              : $light-gray;
+$border-color               : $darker-gray;
+
+$helvetica                  : Helvetica, "Helvetica Neue", Arial, sans-serif;
+
+$border-radius              : 4px;
+
+/* End Variables */

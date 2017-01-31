@@ -1,0 +1,39 @@
+---
+layout: default-tabs
+title: dubspace
+description: Rhythm Shoot Em Up Bullet Hell
+developer: Alex Bennett
+display-img: /assets/images/dubspace/banner.jpg
+header:
+    video:
+        embed: /CimLHtWK-bE?playlist=CimLHtWK-bE
+    overlay_image: /assets/images/dubspace/title-box.png
+    download_url: https://drive.google.com/open?id=0BzLBvlzBp2H4a0w4X1V4MDBCbU0
+tabs:
+    main:
+        - General Info
+        - Code Examples
+    snippets:
+        - Enemy.cs
+        - PlayerController.cs
+---
+<div id="General Info" class="tab-body">
+    <p>Made in 2012 as my year 12 semester (16 weeks) extended project. This game was my first complete project and was made during my first year of learning programming. Its coded entirely using javascript and the only external package used was iTween.</p>
+    <p>I have recently decided to port the game to Unity 5 and C#, where I will have to remake much of the game. The provided code snippets are the start reimplementations of the AI and Player controller scripts.</p>
+    <h3>Controls</h3>
+    <p>W A S D to move, LMB to shoot, Spacebar to use special move, Scroll or 1, 2, 3, to change special ability and ESC to pause.</p>
+    <h3>Gameplay</h3>
+    <p>The core gameplay is a simple shoot 'em up/bullet hell and consists of enemies spawning to the bass of the music. The player HUD is located around the player so they don't have to look away from the enemies they are trying to avoid.</p>
+    <p>There are 4 enemy types:
+    <ul>
+        <li>Red - fast, low health</li>
+        <li>Green - slow, heigh health</li>
+        <li>Blue - normal speed and health</li>
+        <li>Purple - special unit, teleports to random location around player. Highly deadly and perhaps a bit over powered.</li>
+    </ul></p>
+    <p>The Waves gamemode has a boss every 5 waves and is my favourite mode. The boss could be a wave of purple enemies or a large bullet hell boss. Also upon testing the game for this portfolio I have noticed a few bugs. Sometimes the game crashes on exit, as well as enemies will randomly die over time, which is likely a coroutine issue.</p>
+</div>
+
+<div id="Code Examples" class="tab-body">
+    {% include code-snippets.html data=page.tabs.snippets %}
+</div>

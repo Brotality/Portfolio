@@ -1,0 +1,53 @@
+# Site settings
+title: Development Portfolio
+owner: Alex Bennett
+email: alex.bennett1994@gmail.com
+location: Canberra, Australia
+timezone: Australia/Sydney
+description: > # this means to ignore newlines until "baseurl:"
+  Alex Bennett's Unity Development Portfolio and Online CV.
+profile:
+  I am passionate programmer who takes pride in creating clean, elegant and efficient code. 
+  I love developing Unity games and aspire to become an independent developer.
+baseurl: "/Portfolio" # the subpath of your site, e.g. /blog
+url: "http://brotality.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+#twitter_username: jekyllrb
+github_username: brotality
+
+# Analytics
+analytics:
+  provider               : "google"
+  google:
+    tracking_id          : "UA-86650514-1"
+
+# Build settings
+markdown: kramdown
+theme: minima
+
+# Plugins
+gems:
+  - jekyll-gist
+  - jekyll-feed
+  - jemoji
+
+# mimic GitHub Pages with --safe
+whitelist:
+  - jekyll-gist
+  - jekyll-feed
+  - jemoji
+
+# Files to ignore
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - "*.sh"
+
+# SASS
+sass:
+  sass_dir: ./assets/css/sass
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /:path

@@ -1,0 +1,20 @@
+<div class="col-sm-4">
+  <figure class="imghvr-blur">
+    <img src="assets/images/{{ proj.title }}/banner.jpg" class="img-responsive">
+    <figcaption style="padding: 1em;">
+      <div class="centered">
+        <h2 class="text-uppercase">{{ proj.title }}</h2>
+        <p style="font-size: 12px;">
+          {{ proj.description }}
+          {% if proj.developer %}
+            <br>Developer: {{ proj.developer }}
+          {% endif %}
+          {% if proj.composer %}
+            <br>Composer: {{ proj.composer }}
+          {% endif %}
+        </p>
+      </div>
+    </figcaption>
+    <a href="{{ site.baseurl }}{{ proj.url }}"></a>
+  </figure>
+</div>

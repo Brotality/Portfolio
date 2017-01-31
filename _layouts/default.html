@@ -1,0 +1,25 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{{ site.owner }} - {{ site.title }}</title>
+    {% include dependencies.html %}
+    {% include analytics.html %}
+  </head>
+  <body>
+    <div class="main-wrapper">
+      {% include navigation.html %}
+      {% include jumbotron.html %}
+      <div class="content default-background">
+        <div class="container text-center">
+          <div class="text-left">
+            {{ content }}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include footer.html %}
+  </body>
+  {% include scripts.html %}
+</html>

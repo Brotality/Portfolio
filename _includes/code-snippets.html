@@ -1,0 +1,9 @@
+<div class="page__tabs code__snippets">
+    {% include tabs.html data=include.data name="snippets" type="horizontal" %}
+    <div class="tab-content">
+        {% for snip in include.data %}
+            {% assign url = "code-examples/" | append: page.title | append: "/" | append: snip %}
+            <div id="{{ snip }}" class="tab-body"><pre><code>/* Copyright (c) 2016 Alex Bennett */<br>{% include {{ url }} %}</code></pre></div>
+        {% endfor %}
+    </div>
+</div>
